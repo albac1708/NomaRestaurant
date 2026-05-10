@@ -342,6 +342,8 @@ body.cg #cur-r { width: 48px; height: 48px; border-color: var(--gold); }
   background: var(--navy-l);
   border-top: 1px solid rgba(196,168,130,.08);
   border-bottom: 1px solid rgba(196,168,130,.08);
+  /* Fade-in on page load */
+  animation: fadeUp .8s var(--ease) 1.8s both;
 }
 .strip-in {
   max-width: 1060px; margin: 0 auto;
@@ -669,25 +671,32 @@ footer::before {
 
 /* ─── MOBILE ─── */
 @media (max-width: 768px) {
-  /* Hero */
-  #hero { padding: 88px 1.5rem 60px; }
+  /* Hero — no more full-screen empty space */
+  #hero {
+    min-height: auto;
+    padding: 108px 1.5rem 4rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
   .hero-corner { display: none; }
+  .hero-content { max-width: 100%; }
   .h-hero-logo { display: block; }
   .h-location { font-size: 11px; letter-spacing: .22em; }
-  .h-rule { margin: 1rem auto; }
-  .h-title { font-size: clamp(2.6rem, 10vw, 3.4rem); line-height: 1.08; }
-  .h-sub { font-size: 1rem; letter-spacing: .04em; }
+  .h-rule { margin: .9rem auto; max-width: 200px; }
+  .h-title { font-size: clamp(2.8rem, 11vw, 3.6rem); line-height: 1.06; }
+  .h-sub { font-size: 1rem; letter-spacing: .03em; }
   .hero-scroll { display: none; }
 
-  /* Strip — 2×2 grid instead of 4 stacked */
-  .strip-in { display: grid; grid-template-columns: 1fr 1fr; }
+  /* Strip — horizontal scroll on mobile */
+  #strip { overflow-x: auto; overflow-y: visible; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  #strip::-webkit-scrollbar { display: none; }
+  .strip-in { display: flex; flex-wrap: nowrap; max-width: none; width: max-content; padding: 0; }
   .si {
-    min-width: unset; padding: 1.1rem 1rem;
+    flex: 0 0 auto; min-width: 170px;
     border-right: 1px solid rgba(196,168,130,.09);
-    border-bottom: 1px solid rgba(196,168,130,.09);
+    border-bottom: none; padding: 1.2rem 1.4rem;
   }
-  .si:nth-child(even) { border-right: none; }
-  .si:nth-last-child(-n+2) { border-bottom: none; }
+  .si:last-child { border-right: none; }
 
   /* About */
   #about { padding: 5rem 1.4rem; }
@@ -735,8 +744,15 @@ footer::before {
   .res-item { padding: .9rem; }
 
   /* Footer */
-  footer { padding: 3.5rem 1.4rem 2rem; }
-  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  footer { padding: 3rem 1.4rem 2rem; }
+  .footer-grid { grid-template-columns: 1fr; gap: 0; }
+  .footer-grid > div { padding-bottom: 2rem; border-bottom: 1px solid rgba(240,232,220,.05); margin-bottom: 2rem; }
+  .footer-grid > div:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .ft-logo { height: 36px; }
+  .ft-brand { font-size: .85rem; max-width: 100%; line-height: 1.7; }
+  .ft-col-h { font-size: 9px; margin-bottom: 1rem; }
+  .ft-links a { font-size: .85rem; }
+  .ft-links li + li { margin-top: .6rem; }
 
   /* Titles */
   .s-title { font-size: clamp(1.5rem, 6.5vw, 2.2rem); }
@@ -833,7 +849,7 @@ footer::before {
     </div>
     <a href="https://wolt.com/en/xkx/ferizaj/restaurant/noma-restaurant-12" target="_blank" rel="noopener" class="si sr d3" style="text-decoration:none">
       <div class="si-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 001.97-1.67L23 6H6"/></svg></div>
-      <div><div class="si-lbl">Wolt</div><div class="si-val" data-sq="Porosit Online ↗" data-en="Order Online ↗">Porosit Online ↗</div></div>
+      <div><div class="si-lbl">Wolt</div><div class="si-val" data-sq="Porosit Online" data-en="Order Online ↗">Porosit Online</div></div>
     </a>
   </div>
 </div>
@@ -1078,7 +1094,7 @@ footer::before {
       <span class="res-wolt-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 001.97-1.67L23 6H6"/></svg></span>
       <div>
         <div class="res-wolt-lbl">Wolt</div>
-        <div class="res-wolt-val" data-sq="Porosit Online ↗" data-en="Order Online ↗">Porosit Online ↗</div>
+        <div class="res-wolt-val" data-sq="Porosit Online" data-en="Order Online ↗">Porosit Online</div>
       </div>
     </a>
   </div>
