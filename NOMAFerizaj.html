@@ -584,7 +584,7 @@ body.cg #cur-r { width: 48px; height: 48px; border-color: var(--gold); }
   padding: 8rem 2rem;
   background: linear-gradient(to bottom, var(--navy), var(--navy-d));
 }
-.reserve-in { max-width: 680px; margin: 0 auto; }
+.reserve-in { max-width: 680px; margin: 0 auto; text-align: center; }
 .res-sub {
   font-family: var(--FC); font-style: italic;
   font-size: 1.1rem; color: var(--muted); margin-bottom: 3rem;
@@ -596,18 +596,37 @@ body.cg #cur-r { width: 48px; height: 48px; border-color: var(--gold); }
   display: flex; flex-direction: column; gap: 1.2rem;
 }
 .res-item {
-  display: flex; align-items: center; gap: 1.2rem;
-  padding: 1.2rem; border: 1px solid rgba(196,168,130,.1);
+  display: flex; align-items: center; justify-content: center; gap: 1.2rem;
+  padding: 1.4rem; border: 1px solid rgba(196,168,130,.1);
   transition: background .3s, border-color .3s; cursor: none;
   text-decoration: none;
 }
-.res-item:hover {
-  background: rgba(196,168,130,.06);
-  border-color: rgba(196,168,130,.28);
-}
+.res-item:hover { background: rgba(196,168,130,.06); border-color: rgba(196,168,130,.28); }
 .res-ic { font-size: 1.4rem; color: var(--gold); flex-shrink: 0; display: flex; }
 .res-lbl { font-size: 8px; letter-spacing: .22em; text-transform: uppercase; color: var(--gold-d); }
 .res-val { font-family: var(--FD); font-size: 1.5rem; color: var(--cream); margin-top: .1rem; font-weight: 400; }
+/* Wolt separator */
+.res-divider {
+  display: flex; align-items: center; gap: 1rem; margin-top: 2.5rem;
+}
+.res-divider::before, .res-divider::after {
+  content: ''; flex: 1; height: 1px;
+  background: rgba(196,168,130,.18);
+}
+.res-divider span {
+  font-family: var(--FJ); font-size: 9px; letter-spacing: .32em;
+  text-transform: uppercase; color: var(--gold-d); white-space: nowrap;
+}
+.res-wolt {
+  display: flex; align-items: center; justify-content: center; gap: 1rem;
+  padding: 1.4rem 2rem; margin-top: 1rem; text-decoration: none;
+  border: 1px solid rgba(196,168,130,.2); color: var(--cream);
+  transition: background .3s, border-color .3s; cursor: none;
+}
+.res-wolt:hover { background: rgba(196,168,130,.06); border-color: var(--gold); }
+.res-wolt-ic { color: var(--gold); display: flex; flex-shrink: 0; }
+.res-wolt-lbl { font-size: 8px; letter-spacing: .22em; text-transform: uppercase; color: var(--gold-d); }
+.res-wolt-val { font-family: var(--FD); font-size: 1.3rem; color: var(--cream); margin-top: .1rem; font-weight: 400; }
 
 /* ─── FOOTER ─── */
 footer {
@@ -1050,14 +1069,18 @@ footer::before {
           <div class="res-val" data-sq="Na dërgoni mesazh" data-en="Send us a message">Na dërgoni mesazh</div>
         </div>
       </a>
-      <a href="https://wolt.com/en/xkx/ferizaj/restaurant/noma-restaurant-12" target="_blank" rel="noopener" class="res-item">
-        <span class="res-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 001.97-1.67L23 6H6"/></svg></span>
-        <div>
-          <div class="res-lbl">Wolt</div>
-          <div class="res-val" data-sq="Porosit Online" data-en="Order Online">Porosit Online</div>
-        </div>
-      </a>
     </div>
+
+    <div class="res-divider sr d3">
+      <span data-sq="Porosit Ushqim Online" data-en="Order Food Online">Porosit Ushqim Online</span>
+    </div>
+    <a href="https://wolt.com/en/xkx/ferizaj/restaurant/noma-restaurant-12" target="_blank" rel="noopener" class="res-wolt sr d3">
+      <span class="res-wolt-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 001.97-1.67L23 6H6"/></svg></span>
+      <div>
+        <div class="res-wolt-lbl">Wolt</div>
+        <div class="res-wolt-val" data-sq="Porosit Online ↗" data-en="Order Online ↗">Porosit Online ↗</div>
+      </div>
+    </a>
   </div>
 </section>
 
